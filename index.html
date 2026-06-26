@@ -78,7 +78,9 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
 .cdots b{width:.75vw;height:.75vw;border-radius:50%;background:rgba(255,255,255,.32);transition:.25s}
 .cdots b.on{background:var(--gold);width:1.9vw;border-radius:99px}
 .cnav .nh{font-size:.85vw;color:#aab1c9;font-weight:700}
-.cright{display:flex;flex-direction:column;justify-content:flex-start;gap:1vw}
+.cright{display:flex;flex-direction:column;justify-content:center;gap:1vw}
+.hide{display:none!important}
+#csum{transition:opacity .3s ease}
 .ccap{background:rgba(20,28,48,.52);border:1px solid var(--line);border-radius:1vw;padding:1.2vw 1.6vw;backdrop-filter:blur(9px);transition:opacity .3s ease}
 .ccap .cnum{font-size:1.1vw;font-weight:900;color:var(--gold);letter-spacing:.1em}
 .ccap .ctit{font-size:1.6vw;font-weight:900;color:#fff;margin:.2vw 0 .45vw}
@@ -227,15 +229,15 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
   <div class="cstage">
     <div class="cleft">
       <div class="cframe anim"><img id="cimg" src="home.png" alt="앱 화면"></div>
-      <div class="cnav anim"><div class="cdots" id="cdots"><b class="on"></b><b></b><b></b></div><span class="nh">▶ 다음 버튼 = 사진 전환 (3장)</span></div>
+      <div class="cnav anim"><div class="cdots" id="cdots"><b class="on"></b><b></b><b></b><b></b><b></b><b></b></div><span class="nh" id="nhint">▶ 다음 = 사진 전환 (1/6)</span></div>
     </div>
     <div class="cright">
       <div class="ccap anim" id="ccap">
-        <div class="cnum" id="cnum">01 / 03</div>
+        <div class="cnum" id="cnum">01 / 06</div>
         <div class="ctit" id="ctit">홈 — 오늘의 첫 화면</div>
         <div class="cdesc" id="cdesc">앱을 열면 가장 먼저 펼쳐지는 홈. 오늘의 운세 한 줄, 타로 카드, 시간대별 운세를 한눈에.</div>
       </div>
-      <div class="insight anim">
+      <div class="insight anim hide" id="csum">
         <div class="dot">🧩</div>
         <div><div class="it">기존 사주앱에 ‘사주 데이팅’을 얹는다 — 실행 리스크 낮음</div>
         <div class="ib"><b>사주 데이팅</b>(지역·궁합 매칭·코스 추천·AI 대화코치) + <b>방송 포맷 IP</b>(궁합 블라인드·AI궁합 vs 직감) + <b>시너지 퍼널</b>(QR 유입→과금→데이터 캐스팅). 사주·궁합·AI 20페르소나·전문가 통화·포인트·결제 <b>구현 완료</b> — 한국 사주 IP라 외국 앱 복제 불가.</div></div>
@@ -323,34 +325,43 @@ function animateCount(slide){
     requestAnimationFrame(tick);
   });
 }
-/* --- slide 4 photo carousel --- */
-const SLIDE4=3, PH=[
-  {src:'home.png',num:'01 / 03',tit:'홈 — 오늘의 첫 화면',desc:'앱을 열면 가장 먼저 펼쳐지는 홈. 오늘의 운세 한 줄, 타로 카드, 시간대별 운세를 한눈에.'},
-  {src:'chat.png',num:'02 / 03',tit:'AI 상담 — 캐릭터 점술사',desc:'20개 캐릭터 페르소나(예: 고양이 점술사)와 사주 기반으로 실시간 대화. 연애·진로·인간관계까지.'},
-  {src:'explore.png',num:'03 / 03',tit:'탐색 — 실시간 상담사 매칭',desc:'운세·타로·신점·심리 검증된 상담사를 별점·후기로 비교하고 실시간으로 연결.'}
+/* --- slide 4 photo carousel (6 photos + summary step) --- */
+const SLIDE4=3, NPH=6, PH=[
+  {src:'home.png',num:'01 / 06',tit:'홈 — 오늘의 첫 화면',desc:'앱을 열면 가장 먼저 펼쳐지는 홈. 오늘의 운세 한 줄·타로 카드·시간대별 운세를 한눈에.'},
+  {src:'chat.png',num:'02 / 06',tit:'AI 상담 — 캐릭터 점술사',desc:'20개 캐릭터 페르소나(예: 고양이 점술사)와 사주 기반 실시간 대화. 연애·진로·인간관계까지.'},
+  {src:'explore.png',num:'03 / 06',tit:'탐색 — 실시간 상담사 매칭',desc:'운세·타로·신점·심리 검증된 상담사를 별점·후기로 비교하고 실시간으로 연결.'},
+  {src:'date1.png',num:'04 / 06',tit:'NEW · 궁합 매칭',desc:'내 사주 기준 궁합 점수 높은 순으로 인연 추천. 점수(예: 94 궁합) 보고 좌우로 선택.'},
+  {src:'date2.png',num:'05 / 06',tit:'NEW · 사주 데이팅 코스',desc:'두 사람 사주·기운에 맞춰 시간대별 데이트 코스 자동 제안. 방송 미션 회차·PPL로 연결.'},
+  {src:'date3.png',num:'06 / 06',tit:'NEW · AI 대화 코치',desc:'상대 사주에 맞춘 아이스브레이킹·답장 추천. 출연자 멘트·자막 소스로도 그대로 활용.'}
 ];
 let photo=0;
-const cimg=document.getElementById('cimg'),cnum=document.getElementById('cnum'),ctit=document.getElementById('ctit'),cdesc=document.getElementById('cdesc'),ccap=document.getElementById('ccap');
+const cimg=document.getElementById('cimg'),cnum=document.getElementById('cnum'),ctit=document.getElementById('ctit'),cdesc=document.getElementById('cdesc'),ccap=document.getElementById('ccap'),csum=document.getElementById('csum'),nhint=document.getElementById('nhint');
 const cdots=[...document.querySelectorAll('#cdots b')];
 function renderPhoto(animate){
-  const p=PH[photo];
-  const apply=()=>{cimg.src=p.src;cnum.textContent=p.num;ctit.textContent=p.tit;cdesc.textContent=p.desc;
-    cimg.style.opacity=1;ccap.style.opacity=1;cdots.forEach((d,i)=>d.classList.toggle('on',i===photo));};
-  if(animate){cimg.style.opacity=0;ccap.style.opacity=0;setTimeout(apply,170);} else apply();
+  const summary=(photo>=NPH);
+  const apply=()=>{
+    if(!summary){const p=PH[photo];cimg.src=p.src;cnum.textContent=p.num;ctit.textContent=p.tit;cdesc.textContent=p.desc;}
+    else{cimg.src=PH[NPH-1].src;}
+    ccap.classList.toggle('hide',summary); csum.classList.toggle('hide',!summary);
+    nhint.textContent=summary?'✦ 핵심 요약 — 다음 버튼: 5페이지로':('▶ 다음 = 사진 전환 ('+(photo+1)+'/'+NPH+')');
+    cdots.forEach((d,i)=>d.classList.toggle('on',!summary&&i===photo));
+    cimg.style.opacity=1;ccap.style.opacity=1;csum.style.opacity=1;
+  };
+  if(animate){cimg.style.opacity=0;ccap.style.opacity=0;csum.style.opacity=0;setTimeout(apply,170);} else apply();
 }
 function go(n){
   n=Math.max(0,Math.min(slides.length-1,n));
   const fwd=n>=cur;
   slides.forEach(x=>{x.classList.remove('active');x.querySelectorAll('.anim,.pop').forEach(a=>a.classList.remove('in'));});
   const s=slides[n];s.classList.add('active');
-  if(n===SLIDE4){photo=fwd?0:2;renderPhoto(false);}
+  if(n===SLIDE4){photo=fwd?0:NPH;renderPhoto(false);}
   s.querySelectorAll('.anim,.pop').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),85*i+110));
   setTimeout(()=>animateCount(s),400);
   cur=n;
   dots.forEach((d,i)=>d.classList.toggle('on',i===n));
   document.getElementById('bar').style.width=((n+1)/slides.length*100)+'%';
 }
-function next(){ if(cur===SLIDE4&&photo<2){photo++;renderPhoto(true);return;} go(cur+1); }
+function next(){ if(cur===SLIDE4&&photo<NPH){photo++;renderPhoto(true);return;} go(cur+1); }
 function prev(){ if(cur===SLIDE4&&photo>0){photo--;renderPhoto(true);return;} go(cur-1); }
 document.addEventListener('keydown',e=>{
   if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next();}
