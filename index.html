@@ -69,19 +69,12 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
 .plist li b{color:#fff;font-weight:800}
 .plist li .lv{float:right;color:var(--coral);font-weight:900;font-size:.88vw}
 
-.concept{display:grid;grid-template-columns:.92fr 1.08fr;gap:1.8vw;margin-top:1.7vw;flex:1;min-height:0}
-.shot{padding:.7vw;border:1px solid rgba(232,194,114,.45);box-shadow:0 18px 44px rgba(0,0,0,.42);display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:1.1vw}
-.shot img{width:100%;height:100%;object-fit:contain;border-radius:.7vw}
-.frow{display:flex;flex-direction:column;gap:1.05vw;justify-content:center}
-.fitem{display:flex;gap:1vw;align-items:flex-start}
-.fbadge{flex:0 0 auto;width:2.9vw;height:2.9vw;border-radius:.7vw;display:flex;align-items:center;justify-content:center;font-size:1.4vw;background:linear-gradient(135deg,var(--gold),var(--gold2));box-shadow:0 8px 18px rgba(0,0,0,.35)}
-.fitem:nth-child(2) .fbadge{background:linear-gradient(135deg,var(--jade),#5e9486)}
-.fitem:nth-child(3) .fbadge{background:linear-gradient(135deg,var(--coral),#d6694b)}
-.fitem .ft{font-size:1.32vw;font-weight:800;color:#fff}
-.fitem .fd{font-size:.98vw;color:#dfe3ef;line-height:1.5;margin-top:.2vw;font-weight:500}
-.fitem .fd b{color:#fff}
-.hl{margin-top:.4vw;background:rgba(232,194,114,.12);border:1px solid var(--line);border-radius:.9vw;padding:1vw 1.3vw;font-size:1.0vw;color:#f3eee2;font-weight:600;line-height:1.5}
-.hl b{color:var(--gold)}
+.phones{display:flex;gap:1.6vw;justify-content:center;align-items:flex-start;margin-top:1.4vw;flex:1;min-height:0}
+.phone{display:flex;flex-direction:column;align-items:center;gap:.7vw}
+.frame{padding:.5vw;background:#efeaf6;border:1px solid rgba(232,194,114,.45);border-radius:1vw;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.frame img{height:26.5vw;width:auto;display:block;border-radius:.7vw}
+.cap{font-size:.95vw;font-weight:800;color:#f3eee2;text-align:center}
+.cap b{color:var(--gold)}
 
 .title-wrap{margin:auto 0;max-width:80%}
 .kicker{color:var(--gold);font-weight:800;letter-spacing:.32em;font-size:1.05vw;text-shadow:0 2px 8px rgba(0,0,0,.5)}
@@ -133,11 +126,10 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
 
 <!-- 1 TITLE -->
 <section class="slide cover active">
-  <div class="pgtr">天運 <b>01</b><s>/</s>06</div>
+  <div class="pgtr"><b>01</b><s>/</s>06</div>
   <div class="title-wrap">
     <div class="kicker anim">AI × MEDIA · 사주 콘텐츠 스타트업 · 2026</div>
     <div class="brand anim">천운</div>
-    <div class="hanja anim">天 運</div>
     <div class="sub1 anim">사주 궁합으로 만나는 연애 예능, 그 포맷과 캐스팅 엔진</div>
     <div class="tline anim"></div>
     <div class="sub2 anim">“나는솔로·환승연애의 다음 포맷은 <b style="color:#fff">‘사주 궁합 소개팅’</b>이다.<br>
@@ -149,12 +141,12 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
       <span class="chip anim">포인트·광고·결제 완비</span>
     </div>
   </div>
-  <div class="foot">천운(天運) Pitch · 계명대 컴퓨터공학과 권순재</div>
+  <div class="foot">천운 Pitch · 계명대 컴퓨터공학과 권순재</div>
 </section>
 
 <!-- 2 PROBLEM -->
 <section class="slide">
-  <div class="pgtr">天運 <b>02</b><s>/</s>06</div>
+  <div class="pgtr"><b>02</b><s>/</s>06</div>
   <div class="badge anim">Problem</div>
   <div class="h1 anim">왜 만들었나 — <span class="g">두 개의 고통</span></div>
   <div class="rule anim"></div>
@@ -188,7 +180,7 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
 
 <!-- 3 MARKET -->
 <section class="slide">
-  <div class="pgtr">天運 <b>03</b><s>/</s>06</div>
+  <div class="pgtr"><b>03</b><s>/</s>06</div>
   <div class="badge anim">시장조사 · 숫자로 보는 기회</div>
   <div class="h1 anim">세 시장의 교집합을 <span class="g">천운이 선점</span>한다</div>
   <div class="rule anim"></div>
@@ -219,25 +211,26 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
 
 <!-- 4 CONCEPT + APP SCREENS -->
 <section class="slide">
-  <div class="pgtr">天運 <b>04</b><s>/</s>06</div>
+  <div class="pgtr"><b>04</b><s>/</s>06</div>
   <div class="badge anim">컨셉 · 실제 사주 앱</div>
   <div class="h1 anim">기존 사주앱 위에 <span class="g">‘사주 데이팅’</span>을 얹는다</div>
   <div class="rule anim"></div>
-  <div class="concept">
-    <div class="shot glass anim" style="background:#efeaf6"><img src="app-screens.jpg" alt="천운 앱 화면 — 홈·AI상담·탐색"></div>
-    <div class="frow">
-      <div class="fitem anim"><div class="fbadge">🧩</div><div><div class="ft">사주 데이팅 (In-App)</div><div class="fd"><b>대상 지역 설정 · 사주 궁합 매칭 · 데이팅 코스 추천 · AI 대화 코치</b> — 이미 만든 사주·궁합·AI 인프라에 소개팅 레이어만 추가.</div></div></div>
-      <div class="fitem anim"><div class="fbadge">🎬</div><div><div class="ft">방송 포맷 IP</div><div class="fd">매칭 변수를 외모가 아닌 <b>사주 궁합</b>으로 교체 — 궁합 블라인드 · AI궁합 1위 vs 직감 1위 · 사주 데이트 미션.</div></div></div>
-      <div class="fitem anim"><div class="fbadge">🔗</div><div><div class="ft">시너지 퍼널</div><div class="fd">방송(대규모 노출) → <b>‘우리 궁합?’ QR 유입</b> → 앱 과금·광고 → 데이터가 다음 시즌 캐스팅 강화.</div></div></div>
-      <div class="hl anim">🚀 ‘기획’이 아니라 <b>이미 작동하는 사주 앱</b> — 사주·궁합·AI 20페르소나·전문가 통화·포인트·결제 구현 완료. 한국 사주 IP라 <b>외국 앱 복제 불가</b>, 실행 리스크 낮음.</div>
-    </div>
+  <div class="phones">
+    <div class="phone anim"><div class="frame"><img src="home.png" alt="홈 화면"></div><div class="cap">① 홈 · <b>오늘의 운세·타로</b></div></div>
+    <div class="phone anim"><div class="frame"><img src="chat.png" alt="AI 상담 화면"></div><div class="cap">② AI 상담 · <b>20 캐릭터 페르소나</b></div></div>
+    <div class="phone anim"><div class="frame"><img src="explore.png" alt="상담사 탐색 화면"></div><div class="cap">③ 탐색 · <b>실시간 상담사 매칭</b></div></div>
+  </div>
+  <div class="insight anim">
+    <div class="dot">🧩</div>
+    <div><div class="it">기존 사주앱에 ‘사주 데이팅’을 얹는다 — 실행 리스크 낮음</div>
+    <div class="ib"><b>사주 데이팅</b>(지역·궁합 매칭·코스 추천·AI 대화코치) + <b>방송 포맷 IP</b>(궁합 블라인드·AI궁합 vs 직감) + <b>시너지 퍼널</b>(QR 유입→과금→데이터 캐스팅). 사주·궁합·AI 20페르소나·전문가 통화·포인트·결제 <b>구현 완료</b> — 한국 사주 IP라 외국 앱 복제 불가.</div></div>
   </div>
   <div class="foot">04 · Concept (실제 앱 화면: 홈 · AI 상담 · 상담사 탐색)</div>
 </section>
 
 <!-- 5 BIZ MODEL -->
 <section class="slide">
-  <div class="pgtr">天運 <b>05</b><s>/</s>06</div>
+  <div class="pgtr"><b>05</b><s>/</s>06</div>
   <div class="badge anim">Biz Model · 수익성</div>
   <div class="h1 anim">광고로 깔고, 포인트로 더하고, <span class="g">B2B로 한 방</span></div>
   <div class="rule anim"></div>
@@ -268,7 +261,7 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
 
 <!-- 6 CLOSING -->
 <section class="slide cover">
-  <div class="pgtr">天運 <b>06</b><s>/</s>06</div>
+  <div class="pgtr"><b>06</b><s>/</s>06</div>
   <div class="badge anim">Why Invest</div>
   <div class="h1 anim">TV로 모으고, <span class="g">앱으로 잡는다</span></div>
   <div class="lead anim">Problem → Market → Concept → Biz Model로 이어지는 하나의 흐름</div>
@@ -288,7 +281,7 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
     <div class="whyitem anim"><span class="whynum">4</span><div><b>글로벌 확장</b> — 솔로지옥처럼 K-예능 + 사주 IP = 해외 포맷 수출</div></div>
   </div>
   <div class="closebar anim">방송사는 새 포맷·캐스팅 툴을, 천운은 바이럴·수익을 — 윈윈.  지금이 골든타임.</div>
-  <div class="foot">06 · 천운(天運) · 사주 궁합 연애 예능 엔진</div>
+  <div class="foot">06 · 천운 · 사주 궁합 연애 예능 엔진</div>
 </section>
 
 </div></div>
