@@ -69,12 +69,21 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
 .plist li b{color:#fff;font-weight:800}
 .plist li .lv{float:right;color:var(--coral);font-weight:900;font-size:.88vw}
 
-.phones{display:flex;gap:2vw;justify-content:center;align-items:flex-start;margin-top:1vw;flex:1;min-height:0}
-.phone{display:flex;flex-direction:column;align-items:center;gap:.55vw}
-.frame{padding:.4vw;background:#efeaf6;border:1px solid rgba(232,194,114,.45);border-radius:1vw;box-shadow:0 18px 46px rgba(0,0,0,.5)}
-.frame img{height:33vw;width:auto;display:block;border-radius:.75vw}
-.cap{font-size:.92vw;font-weight:800;color:#f3eee2;text-align:center}
-.cap b{color:var(--gold)}
+.cstage{display:grid;grid-template-columns:.8fr 1.2fr;gap:2.2vw;margin-top:1.1vw;flex:1;min-height:0}
+.cleft{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1vw}
+.cframe{padding:.4vw;background:#efeaf6;border:1px solid rgba(232,194,114,.45);border-radius:1vw;box-shadow:0 18px 48px rgba(0,0,0,.55)}
+.cframe img{height:39vw;width:auto;display:block;border-radius:.75vw;transition:opacity .3s ease}
+.cnav{display:flex;align-items:center;gap:1vw}
+.cdots{display:flex;gap:.6vw}
+.cdots b{width:.75vw;height:.75vw;border-radius:50%;background:rgba(255,255,255,.32);transition:.25s}
+.cdots b.on{background:var(--gold);width:1.9vw;border-radius:99px}
+.cnav .nh{font-size:.85vw;color:#aab1c9;font-weight:700}
+.cright{display:flex;flex-direction:column;justify-content:space-between;gap:1.3vw}
+.ccap{background:rgba(20,28,48,.52);border:1px solid var(--line);border-radius:1vw;padding:1.4vw 1.7vw;backdrop-filter:blur(9px);min-height:9vw;transition:opacity .3s ease}
+.ccap .cnum{font-size:1.15vw;font-weight:900;color:var(--gold);letter-spacing:.1em}
+.ccap .ctit{font-size:1.7vw;font-weight:900;color:#fff;margin:.25vw 0 .55vw}
+.ccap .cdesc{font-size:1.1vw;color:#dfe3ef;font-weight:500;line-height:1.6}
+.cright .insight{margin-top:0}
 
 .title-wrap{margin:auto 0;max-width:80%}
 .kicker{color:var(--gold);font-weight:800;letter-spacing:.32em;font-size:1.05vw;text-shadow:0 2px 8px rgba(0,0,0,.5)}
@@ -215,15 +224,23 @@ html,body{height:100%;background:#0c1120;font-family:'Pretendard',system-ui,sans
   <div class="badge anim">컨셉 · 실제 사주 앱</div>
   <div class="h1 anim">기존 사주앱 위에 <span class="g">‘사주 데이팅’</span>을 얹는다</div>
   <div class="rule anim"></div>
-  <div class="phones">
-    <div class="phone anim"><div class="frame"><img src="home.png" alt="홈 화면"></div><div class="cap">① 홈 · <b>오늘의 운세·타로</b></div></div>
-    <div class="phone anim"><div class="frame"><img src="chat.png" alt="AI 상담 화면"></div><div class="cap">② AI 상담 · <b>20 캐릭터 페르소나</b></div></div>
-    <div class="phone anim"><div class="frame"><img src="explore.png" alt="상담사 탐색 화면"></div><div class="cap">③ 탐색 · <b>실시간 상담사 매칭</b></div></div>
-  </div>
-  <div class="insight anim">
-    <div class="dot">🧩</div>
-    <div><div class="it">기존 사주앱에 ‘사주 데이팅’을 얹는다 — 실행 리스크 낮음</div>
-    <div class="ib"><b>사주 데이팅</b>(지역·궁합 매칭·코스 추천·AI 대화코치) + <b>방송 포맷 IP</b>(궁합 블라인드·AI궁합 vs 직감) + <b>시너지 퍼널</b>(QR 유입→과금→데이터 캐스팅). 사주·궁합·AI 20페르소나·전문가 통화·포인트·결제 <b>구현 완료</b> — 한국 사주 IP라 외국 앱 복제 불가.</div></div>
+  <div class="cstage">
+    <div class="cleft">
+      <div class="cframe anim"><img id="cimg" src="home.png" alt="앱 화면"></div>
+      <div class="cnav anim"><div class="cdots" id="cdots"><b class="on"></b><b></b><b></b></div><span class="nh">▶ 다음 버튼 = 사진 전환 (3장)</span></div>
+    </div>
+    <div class="cright">
+      <div class="ccap anim" id="ccap">
+        <div class="cnum" id="cnum">01 / 03</div>
+        <div class="ctit" id="ctit">홈 — 오늘의 첫 화면</div>
+        <div class="cdesc" id="cdesc">앱을 열면 가장 먼저 펼쳐지는 홈. 오늘의 운세 한 줄, 타로 카드, 시간대별 운세를 한눈에.</div>
+      </div>
+      <div class="insight anim">
+        <div class="dot">🧩</div>
+        <div><div class="it">기존 사주앱에 ‘사주 데이팅’을 얹는다 — 실행 리스크 낮음</div>
+        <div class="ib"><b>사주 데이팅</b>(지역·궁합 매칭·코스 추천·AI 대화코치) + <b>방송 포맷 IP</b>(궁합 블라인드·AI궁합 vs 직감) + <b>시너지 퍼널</b>(QR 유입→과금→데이터 캐스팅). 사주·궁합·AI 20페르소나·전문가 통화·포인트·결제 <b>구현 완료</b> — 한국 사주 IP라 외국 앱 복제 불가.</div></div>
+      </div>
+    </div>
   </div>
   <div class="foot">04 · Concept (실제 앱 화면: 홈 · AI 상담 · 상담사 탐색)</div>
 </section>
@@ -306,17 +323,35 @@ function animateCount(slide){
     requestAnimationFrame(tick);
   });
 }
+/* --- slide 4 photo carousel --- */
+const SLIDE4=3, PH=[
+  {src:'home.png',num:'01 / 03',tit:'홈 — 오늘의 첫 화면',desc:'앱을 열면 가장 먼저 펼쳐지는 홈. 오늘의 운세 한 줄, 타로 카드, 시간대별 운세를 한눈에.'},
+  {src:'chat.png',num:'02 / 03',tit:'AI 상담 — 캐릭터 점술사',desc:'20개 캐릭터 페르소나(예: 고양이 점술사)와 사주 기반으로 실시간 대화. 연애·진로·인간관계까지.'},
+  {src:'explore.png',num:'03 / 03',tit:'탐색 — 실시간 상담사 매칭',desc:'운세·타로·신점·심리 검증된 상담사를 별점·후기로 비교하고 실시간으로 연결.'}
+];
+let photo=0;
+const cimg=document.getElementById('cimg'),cnum=document.getElementById('cnum'),ctit=document.getElementById('ctit'),cdesc=document.getElementById('cdesc'),ccap=document.getElementById('ccap');
+const cdots=[...document.querySelectorAll('#cdots b')];
+function renderPhoto(animate){
+  const p=PH[photo];
+  const apply=()=>{cimg.src=p.src;cnum.textContent=p.num;ctit.textContent=p.tit;cdesc.textContent=p.desc;
+    cimg.style.opacity=1;ccap.style.opacity=1;cdots.forEach((d,i)=>d.classList.toggle('on',i===photo));};
+  if(animate){cimg.style.opacity=0;ccap.style.opacity=0;setTimeout(apply,170);} else apply();
+}
 function go(n){
   n=Math.max(0,Math.min(slides.length-1,n));
+  const fwd=n>=cur;
   slides.forEach(x=>{x.classList.remove('active');x.querySelectorAll('.anim,.pop').forEach(a=>a.classList.remove('in'));});
   const s=slides[n];s.classList.add('active');
+  if(n===SLIDE4){photo=fwd?0:2;renderPhoto(false);}
   s.querySelectorAll('.anim,.pop').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),85*i+110));
   setTimeout(()=>animateCount(s),400);
   cur=n;
   dots.forEach((d,i)=>d.classList.toggle('on',i===n));
   document.getElementById('bar').style.width=((n+1)/slides.length*100)+'%';
 }
-function next(){go(cur+1)} function prev(){go(cur-1)}
+function next(){ if(cur===SLIDE4&&photo<2){photo++;renderPhoto(true);return;} go(cur+1); }
+function prev(){ if(cur===SLIDE4&&photo>0){photo--;renderPhoto(true);return;} go(cur-1); }
 document.addEventListener('keydown',e=>{
   if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next();}
   if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev();}
